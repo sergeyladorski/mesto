@@ -1,0 +1,7 @@
+.gallery__photo-like {
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/icons/like.svg);
+    background-size: 22px 19px;
+    border: none;
+}
