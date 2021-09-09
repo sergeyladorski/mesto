@@ -1,0 +1,15 @@
+.profile {
+  box-sizing: border-box;
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: minmax(138px, 150px) 312px minmax(24px, 1fr) minmax(150px, 1fr);
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .profile {
+    padding-top: 42px;
+    grid-template-columns: minmax(18px, 245px) 200px minmax(18px, 245px);
+    grid-template-rows: repeat(3, min-content);
+  }
+}
