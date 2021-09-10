@@ -6,20 +6,14 @@
   margin-bottom: 25px;
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .gallery__photo {
-    height: 21.06vw;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .gallery__photo {
-    height: 28.77vw;
+    height: calc((90vw - 34px) / 3);
   }
 }
 
 @media screen and (min-width: 425px) and (max-width: 767px) {
   .gallery__photo {
-    height: 43.67vw;
+    height: calc((90vw - 17px) / 2);
   }
 }
