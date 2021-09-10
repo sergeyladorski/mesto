@@ -1,87 +1,162 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="item-description"
+      content="Проект 'Место' на Яндекс Практикум"
+    />
+    <meta
+      name="keywords"
+      content="html, css, javascript, место, Яндекс Практикум"
+    />
+    <meta name="author" content="Сергей Ладорский" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
-</head>
-<body class="page">
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body class="page">
     <header class="header">
-        <img src="./images/logo.svg" alt="логотип Место" class="header__logo">
+      <img src="./images/logo.svg" alt="логотип Место" class="header__logo" />
     </header>
     <main class="content">
-        <section class="profile">
-            <img src="./images/default-avatar.jpg" alt="фото профиля" class="profile__avatar">
-            <div class="profile__info">
-                <h2 class="profile__name">Жак-Ив Кусто</h2>
-                <p class="profile__about">Исследователь океана</p>
+      <section class="profile">
+        <img
+          src="./images/default-avatar.jpg"
+          alt="фото профиля"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <p class="profile__about">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__edit-info"></button>
+
+        <button type="button" class="profile__add-photo"></button>
+      </section>
+
+      <section class="gallery">
+        <ul class="gallery__list">
+          <li class="gallery__card">
+            <img
+              src="./images/gallery/1.jpg"
+              alt="Скалистый склон"
+              class="gallery__photo"
+            />
+
+            <div class="gallery__photo-desc">
+              <p class="gallery__photo-title">Скалистый склон</p>
+              <button class="gallery__photo-like"></button>
             </div>
-            <button type="button" class="profile__edit-info"></button>
-            
-            <button type="button" class="profile__add-photo"></button>
-        </section>
+          </li>
 
-        <section class="gallery">
-            <ul class="gallery__list">
-                <li class="gallery__card">
-                    <img src="./images/gallery/elbrus.jpg" alt="Гора Эльбрус" class="gallery__photo">
-                    <div class="gallery__photo-desc">
-                        <p class="gallery__photo-title">Гора Эльбрус</p>
-                        <button class="gallery__photo-like"></button>
-                    </div>
-                    
-                </li>
+          <li class="gallery__card">
+            <img
+              src="./images/gallery/2.jpg"
+              alt="Прибрежная полоса"
+              class="gallery__photo"
+            />
+            <div class="gallery__photo-desc">
+              <p class="gallery__photo-title">Прибрежная полоса</p>
+              <button class="gallery__photo-like"></button>
+            </div>
+          </li>
 
-                <li class="gallery__card">
-                    <img src="./images/gallery/elbrus.jpg" alt="Гора Эльбрус" class="gallery__photo">
-                    <div class="gallery__photo-desc">
-                        <p class="gallery__photo-title">Гора Эльбрус</p>
-                        <button class="gallery__photo-like"></button>
-                    </div>
-                </li>
+          <li class="gallery__card">
+            <img
+              src="./images/gallery/3.jpg"
+              alt="Вид на залив"
+              class="gallery__photo"
+            />
+            <div class="gallery__photo-desc">
+              <p class="gallery__photo-title">Вид на залив</p>
+              <button class="gallery__photo-like"></button>
+            </div>
+          </li>
 
-                <li class="gallery__card">
-                    <img src="./images/gallery/elbrus.jpg" alt="Гора Эльбрус" class="gallery__photo">
-                    <div class="gallery__photo-desc">
-                        <p class="gallery__photo-title">Гора Эльбрус</p>
-                        <button class="gallery__photo-like"></button>
-                    </div>
-                </li>
+          <li class="gallery__card">
+            <img
+              src="./images/gallery/4.jpg"
+              alt="Лесной пейзаж"
+              class="gallery__photo"
+            />
+            <div class="gallery__photo-desc">
+              <p class="gallery__photo-title">Лесной пейзаж</p>
+              <button class="gallery__photo-like"></button>
+            </div>
+          </li>
 
-                <li class="gallery__card">
-                    <img src="./images/gallery/elbrus.jpg" alt="Гора Эльбрус" class="gallery__photo">
-                    <div class="gallery__photo-desc">
-                        <p class="gallery__photo-title">Гора Эльбрус</p>
-                        <button class="gallery__photo-like"></button>
-                    </div>
-                </li>
+          <li class="gallery__card">
+            <img
+              src="./images/gallery/5.jpg"
+              alt="Хайкинг"
+              class="gallery__photo"
+            />
+            <div class="gallery__photo-desc">
+              <p class="gallery__photo-title">Хайкинг</p>
+              <button class="gallery__photo-like"></button>
+            </div>
+          </li>
 
-                <li class="gallery__card">
-                    <img src="./images/gallery/elbrus.jpg" alt="Гора Эльбрус" class="gallery__photo">
-                    <div class="gallery__photo-desc">
-                        <p class="gallery__photo-title">Гора Эльбрус</p>
-                        <button class="gallery__photo-like"></button>
-                    </div>
-                </li>
+          <li class="gallery__card">
+            <img
+              src="./images/gallery/6.jpg"
+              alt="Камни"
+              class="gallery__photo"
+            />
+            <div class="gallery__photo-desc">
+              <p class="gallery__photo-title">Камни</p>
+              <button class="gallery__photo-like"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-                <li class="gallery__card">
-                    <img src="./images/gallery/elbrus.jpg" alt="Гора Эльбрус" class="gallery__photo">
-                    <div class="gallery__photo-desc">
-                        <p class="gallery__photo-title">Гора Эльбрус</p>
-                        <button class="gallery__photo-like"></button>
-                    </div>
-                </li>
-            </ul>
-        </section>
+      <section class="popup">
+        <form class="popup__container">
+          <button class="popup__close"></button>
+          <h2 class="popup__heading">Редактировать профиль</h2>
+          <div class="popup__input-block">
+            <fieldset class="popup__input">
+              <label for="name">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value="Жак-Ив Кусто"
+                  class="popup__item popup__item_el_name"
+                />
+              </label>
+            </fieldset>
 
-        <section class="edit-form"></section>
+            <fieldset class="popup__input">
+              <label for="about">
+                <input
+                  type="text"
+                  id="about"
+                  name="about"
+                  value="Исследователь океана"
+                  class="popup__item popup__item_el_about"
+                />
+              </label>
+            </fieldset>
+          </div>
+
+          <fieldset class="popup__submit">
+            <input
+              type="submit"
+              title="Сохранить"
+              value="Сохранить"
+              class="popup__save"
+            />
+          </fieldset>
+        </form>
+      </section>
     </main>
     <footer class="footer">
-        <p class="footer__copyright">&copy; 2021&nbsp; 
-            <h1 class="page__heading">Mesto Russia</h1>
-        </p>
-    </footer>    
-</body>
+      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+    </footer>
+    <script src="./scripts/script.js"></script>
+  </body>
 </html>

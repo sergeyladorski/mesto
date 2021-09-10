@@ -1,7 +1,18 @@
 .gallery__photo-like {
-    width: 22px;
-    height: 19px;
-    background-image: url(../../../images/icons/like.svg);
-    background-size: 22px 19px;
-    border: none;
+  width: 22px;
+  height: 19px;
+  border: none;
+  background: none;
+  background-image: url(../../../images/icons/like.svg);
+  background-size: 22px 19px;
+  cursor: pointer;
+}
+
+.gallery__photo-like:hover {
+  opacity: 0.5;
+}
+
+.gallery__photo-like:active {
+  opacity: 1;
+  background-image: url(../../../images/icons/like-active.svg);
 }
