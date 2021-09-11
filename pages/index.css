@@ -5,6 +5,7 @@
 
 /*page*/
 @import url(../blocks/page/page.css);
+@import url(../blocks/page/_no-scroll/page_no-scroll.css);
 
 /*header*/
 @import url(../blocks/header/header.css);
