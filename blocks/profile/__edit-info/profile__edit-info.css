@@ -5,12 +5,14 @@
   height: 24px;
   border: 1px solid #ffffff;
   box-sizing: border-box;
-  align-self: center;
+  align-self: end;
   background-size: 10px 10px;
   background-image: url(../../../images/icons/edit-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .profile__edit-info:hover {
