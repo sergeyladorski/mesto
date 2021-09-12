@@ -1,48 +1,35 @@
-const edit = document.querySelector('.profile__edit-info');
-const popup = document.querySelector('.popup');
-const popupClose = document.querySelector('.popup__close');
-const popupSave = document.querySelector('.popup__save');
-const page = document.querySelector('.page');
+const edit = document.querySelector('.profile__edit-info');     // кнопка 'редактировать профиль'
+const popup = document.querySelector('.popup');                 // попап 'редактировать профиль'
+const popupClose = document.querySelector('.popup__close');     // кнопка закрытия попапа
+
+let profileName = document.querySelector('.profile__name');     // 'имя' на странице профиля и в поле ввода
+let popupName = document.querySelector('.popup__name');
+
+let profileAbout = document.querySelector('.profile__about');   // 'о себе' на странице профиля и в поле ввода
+let popupAbout = document.querySelector('.popup__about');
 
 
-
-function popupOpen () {
-    let profileName = document.querySelector('.profile__name');
-    let profileAbout = document.querySelector('.profile__about');
-    let popupName = document.querySelector('.popup__item_el_name');
-    let popupAbout = document.querySelector('.popup__item_el_about');
-    popupName.value = profileName.innerHTML;
-    popupAbout.value = profileAbout.innerHTML;
+//открыть попап 'редактировать профиль'
+function popupOpen() {
+    popupName.value = profileName.textContent;
+    popupAbout.value = profileAbout.textContent;
     popup.classList.add('popup_opened');
-    page.classList.add('page_no-scroll');
 }
 
-function close () {
+//закрыть попап 'редактировать профиль'
+function close() {
     popup.classList.remove('popup_opened');
-    page.classList.remove('page_no-scroll');
 }
 
-function closeOverlay (event) {
-    if(event.target === event.currentTarget) {
-        close ();
-    }
-}
-
-function saveChanges (evt) {
+//сохранить в информацию профиля
+function saveChanges(evt) {
     evt.preventDefault();
-    let profileName = document.querySelector('.profile__name');
-    let profileAbout = document.querySelector('.profile__about');
-    let popupName = document.querySelector('.popup__item_el_name');
-    let popupAbout = document.querySelector('.popup__item_el_about');
-  
-    profileName.innerHTML = popupName.value;
-    profileAbout.innerHTML = popupAbout.value;
-    popup.classList.remove('popup_opened');
-
+    profileName.textContent = popupName.value;
+    profileAbout.textContent = popupAbout.value;
+    close();
 }
 
 
-edit.addEventListener('click', popupOpen);
-popupClose.addEventListener('click', close);
-popup.addEventListener('click', closeOverlay)
-popupSave.addEventListener('click', saveChanges);
+edit.addEventListener('click', popupOpen);          //открыть попап 'редактировать профиль'
+popupClose.addEventListener('click', close);        //закрыть попап 'редактировать профиль'
+popup.addEventListener('submit', saveChanges);      //сохранить в информацию профиля
