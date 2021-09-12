@@ -6,7 +6,6 @@
   border: 1px solid #ffffff;
   box-sizing: border-box;
   align-self: center;
-  transform: translateY(-50%);
   background-size: 10px 10px;
   background-image: url(../../../images/icons/edit-icon.svg);
   background-repeat: no-repeat;
@@ -23,11 +22,11 @@
   .profile__edit-info {
     width: 18px;
     height: 18px;
-    transform: translateY(50%);
     background-size: 7.5px 7.5px;
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
-    align-self: start;
+    margin-left: 10px;
+    align-self: end;
   }
 }

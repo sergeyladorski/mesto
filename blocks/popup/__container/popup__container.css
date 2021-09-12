@@ -1,12 +1,11 @@
 .popup__container {
-  margin: 50vh auto 0;
   box-sizing: border-box;
   padding: 34px 36px 37px;
-  transform: translateY(-50%);
   max-width: 430px;
   height: min-content;
   background: #ffffff;
   border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   position: relative;
 }
 
