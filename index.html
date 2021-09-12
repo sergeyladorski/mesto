@@ -31,9 +31,17 @@
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__about">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__edit-info"></button>
+        <button
+          type="button"
+          aria-label="редактировать информацию профиля"
+          class="profile__edit-info"
+        ></button>
 
-        <button type="button" class="profile__add-photo"></button>
+        <button
+          type="button"
+          aria-label="добавить фото"
+          class="profile__add-photo"
+        ></button>
       </section>
 
       <section class="gallery">
@@ -46,7 +54,7 @@
             />
 
             <div class="gallery__photo-desc">
-              <p class="gallery__photo-title">Скалистый склон</p>
+              <h2 class="gallery__photo-title">Скалистый склон</h2>
               <button type="button" class="gallery__photo-like"></button>
             </div>
           </li>
@@ -58,7 +66,7 @@
               class="gallery__photo"
             />
             <div class="gallery__photo-desc">
-              <p class="gallery__photo-title">Прибрежная полоса</p>
+              <h2 class="gallery__photo-title">Прибрежная полоса</h2>
               <button type="button" class="gallery__photo-like"></button>
             </div>
           </li>
@@ -70,7 +78,7 @@
               class="gallery__photo"
             />
             <div class="gallery__photo-desc">
-              <p class="gallery__photo-title">Вид на залив</p>
+              <h2 class="gallery__photo-title">Вид на залив</h2>
               <button type="button" class="gallery__photo-like"></button>
             </div>
           </li>
@@ -82,7 +90,7 @@
               class="gallery__photo"
             />
             <div class="gallery__photo-desc">
-              <p class="gallery__photo-title">Лесной пейзаж</p>
+              <h2 class="gallery__photo-title">Лесной пейзаж</h2>
               <button type="button" class="gallery__photo-like"></button>
             </div>
           </li>
@@ -94,7 +102,7 @@
               class="gallery__photo"
             />
             <div class="gallery__photo-desc">
-              <p class="gallery__photo-title">Хайкинг</p>
+              <h2 class="gallery__photo-title">Хайкинг</h2>
               <button type="button" class="gallery__photo-like"></button>
             </div>
           </li>
@@ -106,53 +114,55 @@
               class="gallery__photo"
             />
             <div class="gallery__photo-desc">
-              <p class="gallery__photo-title">Камни</p>
+              <h2 class="gallery__photo-title">Камни</h2>
               <button type="button" class="gallery__photo-like"></button>
             </div>
           </li>
         </ul>
       </section>
 
-      <section class="popup">
-        <form class="popup__container">
-          <button type="button" class="popup__close"></button>
-          <h2 class="popup__heading">Редактировать профиль</h2>
-          <div class="popup__input-block">
-            <fieldset class="popup__input">
-              <label for="name">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value=""
-                  class="popup__item popup__item_el_name"
-                />
-              </label>
-            </fieldset>
+      <div class="popup">
+        <div class="popup__container">
+          <button
+            type="button"
+            aria-label="закрыть"
+            class="popup__close"
+          ></button>
+          <form name="edit-info" class="popup__edit-info">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+              <fieldset class="popup__inputs">
+                <label for="name">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value=""
+                    class="popup__item popup__name"
+                  />
+                </label>
 
-            <fieldset class="popup__input">
-              <label for="about">
-                <input
-                  type="text"
-                  id="about"
-                  name="about"
-                  value=""
-                  class="popup__item popup__item_el_about"
-                />
-              </label>
-            </fieldset>
-          </div>
+                <label for="about">
+                  <input
+                    type="text"
+                    id="about"
+                    name="about"
+                    value=""
+                    class="popup__item popup__about"
+                  />
+                </label>
+              </fieldset>
 
-          <fieldset class="popup__submit">
-            <input
-              type="submit"
-              title="Сохранить"
-              value="Сохранить"
-              class="popup__save"
-            />
-          </fieldset>
-        </form>
-      </section>
+            <fieldset class="popup__submit">
+              <input
+                type="submit"
+                title="Сохранить"
+                value="Сохранить"
+                class="popup__save"
+              />
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
