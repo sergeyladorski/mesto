@@ -1,35 +1,37 @@
 const edit = document.querySelector('.profile__edit-info');     // кнопка 'редактировать профиль'
 const popup = document.querySelector('.popup');                 // попап 'редактировать профиль'
 const popupClose = document.querySelector('.popup__close');     // кнопка закрытия попапа
+const popupForm = document.querySelector('.popup__form');     // форма редактирования 'инфо'
+
 
 let profileName = document.querySelector('.profile__name');     // 'имя' на странице профиля и в поле ввода
-let popupName = document.querySelector('.popup__name');
+let popupName = document.getElementById('name');
 
 let profileAbout = document.querySelector('.profile__about');   // 'о себе' на странице профиля и в поле ввода
-let popupAbout = document.querySelector('.popup__about');
+let popupAbout = document.getElementById('about');
 
 
 //открыть попап 'редактировать профиль'
-function popupOpen() {
+function OpenPopupInfo() {
     popupName.value = profileName.textContent;
     popupAbout.value = profileAbout.textContent;
     popup.classList.add('popup_opened');
 }
 
 //закрыть попап 'редактировать профиль'
-function close() {
+function closePopupInfo() {
     popup.classList.remove('popup_opened');
 }
 
 //сохранить в информацию профиля
-function saveChanges(evt) {
+function saveChangesInfo(evt) {
     evt.preventDefault();
     profileName.textContent = popupName.value;
     profileAbout.textContent = popupAbout.value;
-    close();
+    closePopupInfo();
 }
 
 
-edit.addEventListener('click', popupOpen);          //открыть попап 'редактировать профиль'
-popupClose.addEventListener('click', close);        //закрыть попап 'редактировать профиль'
-popup.addEventListener('submit', saveChanges);      //сохранить в информацию профиля
+edit.addEventListener('click', OpenPopupInfo);          //открыть попап 'редактировать профиль'
+popupClose.addEventListener('click', closePopupInfo);        //закрыть попап 'редактировать профиль'
+popupForm.addEventListener('submit', saveChangesInfo);      //сохранить в информацию профиля
