@@ -125,7 +125,7 @@
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
     
-    <div class="popup">
+    <div class="popup" id="edit-info">
       <div class="popup__container">
         <button
           type="button"
@@ -161,6 +161,49 @@
               type="submit"
               title="Сохранить"
               value="Сохранить"
+              class="popup__save"
+            />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup" id="add-photo">
+      <div class="popup__container">
+        <button
+          type="button"
+          aria-label="закрыть"
+          class="popup__close"
+        ></button>
+        <form name="edit-info" class="popup__form">
+          <h2 class="popup__heading">Новое место</h2>
+            <fieldset class="popup__inputs">
+              <label for="place">
+                <input
+                  type="text"
+                  id="place"
+                  name="place"
+                  value=""
+                  class="popup__item"
+                />
+              </label>
+
+              <label for="link">
+                <input
+                  type="text"
+                  id="link"
+                  name="link"
+                  value=""
+                  class="popup__item"
+                />
+              </label>
+            </fieldset>
+
+          <fieldset class="popup__submit">
+            <input
+              type="submit"
+              title="Создать"
+              value="Создать"
               class="popup__save"
             />
           </fieldset>
