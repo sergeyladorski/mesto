@@ -46,13 +46,14 @@
 
       <section class="gallery">
         <ul aria-label="фото-галерея" class="gallery__list">
+          <!--
           <li class="gallery__card">
             <img
               src="./images/gallery/1.jpg"
               alt="Скалистый склон"
               class="gallery__photo"
             />
-
+            <button type="button" class="gallery__delete-photo"></button>
             <div class="gallery__photo-desc">
               <h2 class="gallery__photo-title">Скалистый склон</h2>
               <button type="button" class="gallery__photo-like"></button>
@@ -65,6 +66,7 @@
               alt="Прибрежная полоса"
               class="gallery__photo"
             />
+            <button type="button" class="gallery__delete-photo"></button>
             <div class="gallery__photo-desc">
               <h2 class="gallery__photo-title">Прибрежная полоса</h2>
               <button type="button" class="gallery__photo-like"></button>
@@ -77,6 +79,7 @@
               alt="Вид на залив"
               class="gallery__photo"
             />
+            <button type="button" class="gallery__delete-photo"></button>
             <div class="gallery__photo-desc">
               <h2 class="gallery__photo-title">Вид на залив</h2>
               <button type="button" class="gallery__photo-like"></button>
@@ -89,6 +92,7 @@
               alt="Лесной пейзаж"
               class="gallery__photo"
             />
+            <button type="button" class="gallery__delete-photo"></button>
             <div class="gallery__photo-desc">
               <h2 class="gallery__photo-title">Лесной пейзаж</h2>
               <button type="button" class="gallery__photo-like"></button>
@@ -101,6 +105,7 @@
               alt="Хайкинг"
               class="gallery__photo"
             />
+            <button type="button" class="gallery__delete-photo"></button>
             <div class="gallery__photo-desc">
               <h2 class="gallery__photo-title">Хайкинг</h2>
               <button type="button" class="gallery__photo-like"></button>
@@ -113,18 +118,20 @@
               alt="Камни"
               class="gallery__photo"
             />
+            <button type="button" class="gallery__delete-photo"></button>
             <div class="gallery__photo-desc">
               <h2 class="gallery__photo-title">Камни</h2>
               <button type="button" class="gallery__photo-like"></button>
             </div>
           </li>
+          -->
         </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
-    
+
     <div class="popup" id="edit-info">
       <div class="popup__container">
         <button
@@ -134,27 +141,29 @@
         ></button>
         <form name="edit-info" class="popup__form">
           <h2 class="popup__heading">Редактировать профиль</h2>
-            <fieldset class="popup__inputs">
-              <label for="name">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value=""
-                  class="popup__item"
-                />
-              </label>
+          <fieldset class="popup__inputs">
+            <label for="name">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value=""
+                class="popup__item"
+                required
+              />
+            </label>
 
-              <label for="about">
-                <input
-                  type="text"
-                  id="about"
-                  name="about"
-                  value=""
-                  class="popup__item"
-                />
-              </label>
-            </fieldset>
+            <label for="about">
+              <input
+                type="text"
+                id="about"
+                name="about"
+                value=""
+                class="popup__item"
+                required
+              />
+            </label>
+          </fieldset>
 
           <fieldset class="popup__submit">
             <input
@@ -177,27 +186,29 @@
         ></button>
         <form name="edit-info" class="popup__form">
           <h2 class="popup__heading">Новое место</h2>
-            <fieldset class="popup__inputs">
-              <label for="place">
-                <input
-                  type="text"
-                  id="place"
-                  name="place"
-                  value=""
-                  class="popup__item"
-                />
-              </label>
+          <fieldset class="popup__inputs">
+            <label for="place">
+              <input
+                type="text"
+                id="place"
+                name="place"
+                placeholder="Название"
+                class="popup__item"
+                required
+              />
+            </label>
 
-              <label for="link">
-                <input
-                  type="text"
-                  id="link"
-                  name="link"
-                  value=""
-                  class="popup__item"
-                />
-              </label>
-            </fieldset>
+            <label for="source">
+              <input
+                type="url"
+                id="source"
+                name="source"
+                placeholder="Ссылка на картинку"
+                class="popup__item"
+                required
+              />
+            </label>
+          </fieldset>
 
           <fieldset class="popup__submit">
             <input
@@ -210,6 +221,22 @@
         </form>
       </div>
     </div>
+
+    <template id="photo-template">
+      <li class="gallery__card">
+        <img
+          src=""
+          alt="фото"
+          class="gallery__photo"
+        />
+        <button type="button" class="gallery__delete-photo"></button>
+        <div class="gallery__photo-desc">
+          <h2 class="gallery__photo-title"></h2>
+          <button type="button" class="gallery__photo-like"></button>
+        </div>
+      </li>
+    </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
