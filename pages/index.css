@@ -27,9 +27,11 @@
 @import url(../blocks/gallery/__list/gallery__list.css);
 @import url(../blocks/gallery/__card/gallery__card.css);
 @import url(../blocks/gallery/__photo/gallery__photo.css);
+@import url(../blocks/gallery/__delete-photo/gallery__delete-photo.css);
 @import url(../blocks/gallery/__photo-desc/gallery__photo-desc.css);
 @import url(../blocks/gallery/__photo-title/gallery__photo-title.css);
 @import url(../blocks/gallery/__photo-like/gallery__photo-like.css);
+@import url(../blocks/gallery/__photo-like/_active/gallery__photo-like_active.css);
 
 /*footer*/
 @import url(../blocks/footer/footer.css);

@@ -6,14 +6,10 @@
   background: none;
   background-image: url(../../../images/icons/like.svg);
   background-size: 22px 19px;
+  background-repeat: no-repeat;
   cursor: pointer;
 }
 
 .gallery__photo-like:hover {
   opacity: 0.5;
-}
-
-.gallery__photo-like:active {
-  opacity: 1;
-  background-image: url(../../../images/icons/like-active.svg);
 }
