@@ -1,4 +1,4 @@
-//редактировать профиль
+//popup 'редактировать профиль'
 const btnEditInfo = document.querySelector('.profile__edit-info');  // кнопка открытия попапа
 const popupInfo = document.getElementById('edit-info');             // попап 'редактировать профиль'
 const popupInfoClose = popupInfo.querySelector('.popup__close');    // кнопка закрытия попапа 
@@ -10,7 +10,7 @@ let popupName = document.getElementById('name');
 let profileAbout = document.querySelector('.profile__about');
 let popupAbout = document.getElementById('about');
 
-//добавить фото
+//popup 'добавить фото'
 const btnAddPhoto = document.querySelector('.profile__add-photo');  // кнопка открытия попапа
 const popupPhoto = document.getElementById('add-photo');            // попап 'добавить фото'
 const popupPhotoClose = popupPhoto.querySelector('.popup__close');  // кнопка закрытия попапа 
@@ -21,6 +21,7 @@ const popupPhotoForm = popupPhoto.querySelector('.popup__form');    // форм�
 //открыть попап
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    console.log(123);
 }
 
 //установить значения инпутов из 'информация профиля'
@@ -77,40 +78,38 @@ const initialCards = [
 ];
 
 
+const cardsContainer = document.querySelector('.gallery__list');            //список карточек
+const cardTemplate = document.getElementById('photo-template').content;     //шаблон карточки
 //начальные карточки в галерее
-function defaultCard() {
+function renderCards() {
     initialCards.forEach((item) => {
-        const cardsContainer = document.querySelector('.gallery__list');
-        const photoTemplate = document.getElementById('photo-template').content;
-        const photoElement = photoTemplate.querySelector('.gallery__card').cloneNode(true);
-        cardsContainer.append(photoElement);
+        const initialCard = cardTemplate.querySelector('.gallery__card').cloneNode(true);
 
-        photoElement.querySelector('.gallery__photo-title').textContent = item.name;
-        photoElement.querySelector('.gallery__photo').src = item.link;
+        initialCard.querySelector('.gallery__photo-title').textContent = item.name;
+        initialCard.querySelector('.gallery__photo').src = item.link;
+
+        cardsContainer.append(initialCard);
     })
-
 }
 
-defaultCard();
+renderCards();
 
-//создать карточку по template шаблону и добавить ее в начало галереи
-//присвоить карточке название и ссылку на картинку из инпутов
-function createNewCard() {
-    const cardsContainer = document.querySelector('.gallery__list');
-    const photoTemplate = document.getElementById('photo-template').content;
-    const photoElement = photoTemplate.querySelector('.gallery__card').cloneNode(true);
-    cardsContainer.prepend(photoElement);
+
+//создать новое фото с описанием
+function createNewCard(evt) {
+    evt.preventDefault();
+    //создать карточку по template шаблону и добавить ее в начало галереи
+    const newCardElement = cardTemplate.querySelector('.gallery__card').cloneNode(true);
+    cardsContainer.prepend(newCardElement);
+    //присвоить карточке название и ссылку на картинку из инпутов
     const titleValue = document.getElementById('place').value;
     const sourceValue = document.getElementById('source').value;
 
-    photoElement.querySelector('.gallery__photo-title').textContent = titleValue;
-    photoElement.querySelector('.gallery__photo').src = sourceValue;
-}
+    newCardElement.querySelector('.gallery__photo-title').textContent = titleValue;
+    newCardElement.querySelector('.gallery__photo').src = sourceValue;
+    //задать слушателей событий
+    setEventListener(newCardElement);
 
-//создать новое фото с описанием
-function saveChangesPhoto(evt) {
-    evt.preventDefault();
-    createNewCard();
     evt.currentTarget.reset();
     closePopup(popupPhoto);
 }
@@ -127,36 +126,65 @@ btnAddPhoto.addEventListener('click', () => openPopup(popupPhoto));
 //закрыть попап 'добавить фото'
 popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));
 //сохранить новое фото с описанием
-popupPhotoForm.addEventListener('submit', saveChangesPhoto);
+popupPhotoForm.addEventListener('submit', createNewCard);
 
-
-
-//псевдомассив фото-карточек
-const cardList = document.querySelectorAll('.gallery__card');
 
 //удалить выбранную карточку
 let deleteCard = (evt) => {
     evt.preventDefault();
-    console.log(123);
     let target = evt.target;
-    let currentCard = evt.currentTarget;
+    let currentCard = evt.currentTarget.closest('.gallery__card');
     if (target.classList.contains('gallery__delete-photo')) {
         currentCard.removeEventListener('click', deleteCard);
         currentCard.remove();
     }
 }
-//при клике на любую карточку из псевдомассива вызывается функция ее удаления
-cardList.forEach((card) => { card.addEventListener('click', deleteCard); });
-
 
 //поставить лайк выбранной карточке
 let likeCard = (evt) => {
     evt.preventDefault();
-    console.log(123);
     let target = evt.target;
     if (target.classList.contains('gallery__photo-like')) {
         target.classList.toggle('gallery__photo-like_active');
     }
 }
-//при клике на любую карточку из псевдомассива лайк становится активным
+
+//массив фото-карточек
+const cardList = document.querySelectorAll('.gallery__card');
+//при клике на любую карточку из массива вызывается функция ее удаления
+cardList.forEach((card) => { card.addEventListener('click', deleteCard); });
+//при клике на любую карточку из массива лайк становится активным
 cardList.forEach((card) => { card.addEventListener('click', likeCard); });
+
+function setEventListener(item) {
+    item.querySelector(".gallery__delete-photo").addEventListener("click", deleteCard);
+    item.querySelector(".gallery__photo-like").addEventListener("click", likeCard);
+    item.querySelector(".gallery__photo").addEventListener("click", openPopupView);
+}
+
+
+const popupView = document.getElementById('view');
+
+let openPopupView = (evt) => {
+    evt.preventDefault();
+    let target = evt.target;
+    let currentCard = evt.currentTarget.closest('.gallery__card');
+
+    let cardPhoto = currentCard.querySelector('.gallery__photo');
+    let popupPhoto = popupView.querySelector('.popup__photo')
+    
+
+    let cardTitle = currentCard.querySelector('.gallery__photo-title');
+    let popupTitle = popupView.querySelector('.popup__photo-title')
+
+    if (target.classList.contains('gallery__photo')) {
+        currentCard.removeEventListener('click', openPopup(popupView));
+        popupPhoto.src = cardPhoto.src;
+        popupTitle.textContent = cardTitle.textContent;
+    }   
+}
+
+cardList.forEach((card) => { card.addEventListener('click', openPopupView); });
+const popupViewClose = popupView.querySelector('.popup__close');    
+popupViewClose.addEventListener('click', () => closePopup(popupView));
+
