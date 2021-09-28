@@ -19,11 +19,9 @@ const popupPhotoForm = popupPhoto.querySelector('.popup__form');    // форм�
 const popupView = document.getElementById('view');                  //попап 'просмотр фото'
 const popupViewClose = popupView.querySelector('.popup__close');    // кнопка закрытия попапа 
 
-const cardsContainer = document.querySelector('.gallery__list');            //список карточек
-const cardTemplate = document.getElementById('photo-template').content;     //шаблон карточки
-const cardElement = cardTemplate.querySelector('.gallery__card');
+const cardsContainer = document.querySelector('.gallery__list');    //список карточек
 
-//Шесть карточек «из коробки»
+//начальные карточки
 const initialCards = [
     {
         name: 'Скалистый склон',
@@ -54,7 +52,6 @@ const initialCards = [
 //открыть попап
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    console.log(123);
 }
 //установить значения input из 'информация профиля'
 function setInputsValue() {
@@ -76,53 +73,84 @@ function saveChangesInfo(evt) {
     saveInfoValue();
     closePopup(popupInfo);
 }
-//создать заготовку для карточки
-function createCard() {
-    const newCardElement = cardElement.cloneNode(true);
-    setEventListener(cardElement);
-    return newCardElement;
-    console.log('создана заготовка для карточки');
+
+//создать карточку
+function createCard(data) {
+    const cardTemplate = document.getElementById('photo-template').content;         //шаблон карточки
+    const newCard = cardTemplate.querySelector('.gallery__card').cloneNode(true);   //новая карточка
+    setCardProperties(newCard, data);                                               //свойства новой карточки
+    setEventListener(newCard);                                                      //EventListener новой карточки
+    return newCard;
 }
 
-//присвоить карточке значения из input 
-function setNewCardProperties() {
-    const titleValue = document.getElementById('place').value;
-    const sourceValue = document.getElementById('source').value;
-
-    cardElement.querySelector('.gallery__photo-title').textContent = titleValue;
-    cardElement.querySelector('.gallery__photo').src = sourceValue;
-    cardElement.querySelector('.gallery__photo').alt = titleValue;
-
-    console.log('новой карточке присвоены значения из input');
+//присвоить карточке значения
+function setCardProperties(item, data) {
+    item.querySelector('.gallery__photo-title').textContent = data.name;
+    item.querySelector('.gallery__photo').src = data.link;
+    item.querySelector('.gallery__photo').alt = data.name;
 }
-//создать новое фото с описанием
+
+//создать новую карточку
 function createNewCard(evt) {
-    evt.preventDefault();
-    createCard();
-    setNewCardProperties()
-    cardsContainer.prepend(cardElement);
+    evt.preventDefault();                                   //сохранить данные из input в объект
+    const data = {
+        name: document.getElementById('place').value,
+        link: document.getElementById('source').value,
+    }
+    cardsContainer.prepend(createCard(data));
     evt.currentTarget.reset();
     closePopup(popupPhoto);
-
     console.log('создана новая карточка');
 }
 
-//присвоить карточкам "из коробки" присвоены значения начального массива
-function setInitialCardProperties(item) {
-    cardElement.querySelector('.gallery__photo-title').textContent = item.name;
-    cardElement.querySelector('.gallery__photo').src = item.link;
-    cardElement.querySelector('.gallery__photo').alt = item.name;
-
-    console.log('карточкам "из коробки" присвоены значения начального массива');
-}
-//карточки "из коробки"
-function defaultCards() {
+//начальные карточки
+function createDefaultCards() {
     initialCards.forEach((item) => {
-        createCard();
-        setInitialCardProperties(item);
-        cardsContainer.append(cardElement);
-        console.log('создана карточка по умолчанию');
+        cardsContainer.append(createCard(item));
     })
+}
+
+//eventListener для карточек
+function setEventListener(item) {
+    item.querySelector(".gallery__delete-photo").addEventListener("click", deleteCard);
+    item.querySelector(".gallery__photo-like").addEventListener("click", likeCard);
+    item.querySelector(".gallery__photo").addEventListener("click", openPopupView);
+}
+//удалить выбранную карточку
+const deleteCard = (evt) => {
+    evt.preventDefault();
+    const target = evt.target;
+    const currentCard = evt.currentTarget.closest('.gallery__card');
+    if (target.classList.contains('gallery__delete-photo')) {
+        currentCard.remove();
+    }
+}
+//поставить лайк выбранной карточке
+const likeCard = (evt) => {
+    evt.preventDefault();
+    const target = evt.target;
+    if (target.classList.contains('gallery__photo-like')) {
+        target.classList.toggle('gallery__photo-like_active');
+    }
+}
+//открыть фото карточки
+const openPopupView = (evt) => {
+    evt.preventDefault();
+    const target = evt.target;
+    const currentCard = evt.currentTarget.closest('.gallery__card');
+
+    const cardPhoto = currentCard.querySelector('.gallery__photo');
+    const popupPhoto = popupView.querySelector('.popup__photo')
+
+    const cardTitle = currentCard.querySelector('.gallery__photo-title');
+    const popupTitle = popupView.querySelector('.popup__photo-title')
+
+    if (target.classList.contains('gallery__photo')) {
+        popupPhoto.src = cardPhoto.src;
+        popupTitle.textContent = cardTitle.textContent;
+        popupPhoto.alt = cardTitle.textContent;
+    }
+    openPopup(popupView);
 }
 
 //открыть попап 
@@ -136,52 +164,4 @@ popupViewClose.addEventListener('click', () => closePopup(popupView));          
 popupInfoForm.addEventListener('submit', saveChangesInfo);                                  //информация профиля
 popupPhotoForm.addEventListener('submit', createNewCard);                                   //новое фото с описанием
 
-//eventListener для карточек
-function setEventListener(item) {
-    item.querySelector(".gallery__delete-photo").addEventListener("click", deleteCard);
-    item.querySelector(".gallery__photo-like").addEventListener("click", likeCard);
-    item.querySelector(".gallery__photo").addEventListener("click", openPopupView);
-    console.log('EventListener установлен');
-}
-//удалить выбранную карточку
-const deleteCard = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    const currentCard = evt.currentTarget.closest('.gallery__card');
-    if (target.classList.contains('gallery__delete-photo')) {
-        currentCard.remove();
-    }
-    console.log('удаление карточки');
-}
-//поставить лайк выбранной карточке
-const likeCard = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    if (target.classList.contains('gallery__photo-like')) {
-        target.classList.toggle('gallery__photo-like_active');
-    }
-    console.log('(не)нравится это фото');
-}
-//открыть фото карточки
-const openPopupView = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    const currentCard = evt.currentTarget.closest('.gallery__card');
-
-    const cardPhoto = currentCard.querySelector('.gallery__photo');
-    const popupPhoto = popupView.querySelector('.popup__photo')
-
-
-    const cardTitle = currentCard.querySelector('.gallery__photo-title');
-    const popupTitle = popupView.querySelector('.popup__photo-title')
-
-    if (target.classList.contains('gallery__photo')) {
-        popupPhoto.src = cardPhoto.src;
-        popupTitle.textContent = cardTitle.textContent;
-        popupTitle.alt = cardTitle.textContent;
-    }
-    openPopup(popupView);
-    console.log('открыт режим просмотра');
-}
-
-defaultCards();
+createDefaultCards();
