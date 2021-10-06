@@ -53,6 +53,17 @@ const initialCards = [
 function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
+                                                                    //закрыть активный попап кликом по оверлею
+document.addEventListener('click', (evt) => {
+    evt.target.classList.remove('popup_opened');
+})
+                                                                    //закрыть активный попап по Esc
+document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+        document.querySelector('.popup_opened').classList.remove('popup_opened');
+    }
+});
+
 //установить значения input из 'информация профиля'
 function setInputsValue() {
     popupName.value = profileName.textContent;
@@ -163,5 +174,4 @@ popupViewClose.addEventListener('click', () => closePopup(popupView));          
 //сохранить и закрыть попап 
 popupInfoForm.addEventListener('submit', saveChangesInfo);                                  //информация профиля
 popupPhotoForm.addEventListener('submit', createNewCard);                                   //новое фото с описанием
-
 createDefaultCards();
