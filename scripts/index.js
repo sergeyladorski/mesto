@@ -1,21 +1,21 @@
 //popup 'редактировать профиль'
 const btnEditInfo = document.querySelector('.profile__edit-info');  // кнопка открытия попапа
-const popupInfo = document.getElementById('edit-info');             // попап 'редактировать профиль'
+const popupInfo = document.querySelector('#edit-info');             // попап 'редактировать профиль'
 const popupInfoClose = popupInfo.querySelector('.popup__close');    // кнопка закрытия попапа 
 const formInfo = popupInfo.querySelector('.form');                  // форма 'редактировать профиль'
 // 'имя' на странице и в input
 const profileName = document.querySelector('.profile__name');
-const popupName = document.getElementById('name');
+const popupName = document.querySelector('#name');
 // 'о себе' на странице и в input
 const profileAbout = document.querySelector('.profile__about');
-const popupAbout = document.getElementById('about');
+const popupAbout = document.querySelector('#about');
 //popup 'добавить фото'
 const btnAddPhoto = document.querySelector('.profile__add-photo');  // кнопка открытия попапа
-const popupPhoto = document.getElementById('add-photo');            // попап 'добавить фото'
+const popupPhoto = document.querySelector('#add-photo');            // попап 'добавить фото'
 const popupPhotoClose = popupPhoto.querySelector('.popup__close');  // кнопка закрытия попапа 
 const formPhoto = popupPhoto.querySelector('.form');                // форма 'добавить фото'
 //popup 'просмотр фото'
-const popupView = document.getElementById('view');                  //попап 'просмотр фото'
+const popupView = document.querySelector('#view');                  //попап 'просмотр фото'
 const popupViewClose = popupView.querySelector('.popup__close');    // кнопка закрытия попапа 
 //галерея
 const cardsContainer = document.querySelector('.gallery__list');    //список карточек
@@ -51,6 +51,7 @@ const initialCards = [
 function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
+
 //установить значения input из 'информация профиля'
 function setInputsValue() {
     popupName.value = profileName.textContent;
@@ -74,7 +75,7 @@ function saveChangesInfo(evt) {
 
 //создать карточку
 function createCard(data) {
-    const cardTemplate = document.getElementById('photo-template').content;         //шаблон карточки
+    const cardTemplate = document.querySelector('#photo-template').content;         //шаблон карточки
     const newCard = cardTemplate.querySelector('.gallery__card').cloneNode(true);   //новая карточка
     setCardProperties(newCard, data);                                               //свойства новой карточки
     setEventListener(newCard);                                                      //EventListener новой карточки
@@ -82,16 +83,17 @@ function createCard(data) {
 }
 //присвоить карточке значения
 function setCardProperties(item, data) {
+    const photoElement = item.querySelector('.gallery__photo');
     item.querySelector('.gallery__photo-title').textContent = data.name;
-    item.querySelector('.gallery__photo').src = data.link;
-    item.querySelector('.gallery__photo').alt = data.name;
+    photoElement.src = data.link;
+    photoElement.alt = data.name;
 }
 //создать новую карточку
 function createNewCard(evt) {
     evt.preventDefault();                                   //сохранить данные из input в объект
     const data = {
-        name: document.getElementById('place').value,
-        link: document.getElementById('source').value,
+        name: document.querySelector('#place').value,
+        link: document.querySelector('#source').value,
     }
     cardsContainer.prepend(createCard(data));
     evt.currentTarget.reset();
@@ -153,12 +155,12 @@ btnAddPhoto.addEventListener('click', () => openPopup(popupPhoto));             
 popupInfoClose.addEventListener('click', () => closePopup(popupInfo));                      //редактировать профиль
 popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));                    //добавить фото
 popupViewClose.addEventListener('click', () => closePopup(popupView));                      //просмотр фото
-//закрыть активный по оверлею
+//закрыть по overlay
 document.addEventListener('click', (evt) => {
     evt.target.classList.remove('popup_opened');
 })
-//закрыть активный по Esc
-document.addEventListener('keydown', function (evt) {
+//закрыть по Esc
+document.addEventListener('keydown', (evt) => {
     if (evt.key === 'Escape') {
         document.querySelector('.popup_opened').classList.remove('popup_opened');
     }
