@@ -50,8 +50,24 @@ const initialCards = [
 //открыть попап
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    closePopupOverlay(popup);
+    popup.addEventListener('keydown', closePopupEsc(popup));
 }
 
+//закрыть по overlay
+function closePopupOverlay(popup) {
+    popup.addEventListener('click', (evt) => {
+        closePopup(evt.target);
+    })
+}
+//закрыть по Esc
+function closePopupEsc(popup) {
+    document.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape') {
+            closePopup(popup);
+        }
+    })
+}
 //установить значения input из 'информация профиля'
 function setInputsValue() {
     popupName.value = profileName.textContent;
@@ -60,6 +76,7 @@ function setInputsValue() {
 //закрыть попап без сохранения изменений
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    popup.removeEventListener('keydown', closePopupEsc(popup));
 }
 //установить значения 'информация профиля' из input
 function saveInfoValue() {
@@ -155,16 +172,6 @@ btnAddPhoto.addEventListener('click', () => openPopup(popupPhoto));             
 popupInfoClose.addEventListener('click', () => closePopup(popupInfo));                      //редактировать профиль
 popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));                    //добавить фото
 popupViewClose.addEventListener('click', () => closePopup(popupView));                      //просмотр фото
-//закрыть по overlay
-document.addEventListener('click', (evt) => {
-    evt.target.classList.remove('popup_opened');
-})
-//закрыть по Esc
-document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-        document.querySelector('.popup_opened').classList.remove('popup_opened');
-    }
-});
 //сохранить и закрыть попап 
 formInfo.addEventListener('submit', saveChangesInfo);                                  //информация профиля
 formPhoto.addEventListener('submit', createNewCard);                                   //новое фото с описанием
