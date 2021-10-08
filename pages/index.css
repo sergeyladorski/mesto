@@ -41,9 +41,14 @@
 /*form*/
 @import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__fieldset/form__fieldset.css);
+/*form__input*/
+@import url(../blocks/form/__input-label/form__input-label.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input/_type/form__input_type_error.css);
+/*form__input-error*/
+@import url(../blocks/form/__input-error/form__input-error.css);
 @import url(../blocks/form/__input-error/_active/form__input-error_active.css);
+/*form__submit*/
 @import url(../blocks/form/__submit/form__submit.css);
 @import url(../blocks/form/__save/form__save.css);
 @import url(../blocks/form/__save/_inactive/form__save_inactive.css);
