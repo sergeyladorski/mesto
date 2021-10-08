@@ -45,8 +45,7 @@
       </section>
 
       <section class="gallery">
-        <ul aria-label="фото-галерея" class="gallery__list">
-        </ul>
+        <ul aria-label="фото-галерея" class="gallery__list"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -60,18 +59,21 @@
           aria-label="закрыть"
           class="popup__close"
         ></button>
-        <form name="edit-info" class="popup__form">
-          <h2 class="popup__heading">Редактировать профиль</h2>
-          <fieldset class="popup__inputs">
+        <form name="edit-info" class="form" novalidate>
+          <h2 class="form__heading">Редактировать профиль</h2>
+          <fieldset class="form__fieldset">
             <label for="name">
               <input
                 type="text"
                 id="name"
                 name="name"
                 value=""
-                class="popup__item"
+                class="form__input"
                 required
+                minlength="2"
+                maxlength="40"
               />
+              <span id="name-error"></span>
             </label>
 
             <label for="about">
@@ -80,18 +82,21 @@
                 id="about"
                 name="about"
                 value=""
-                class="popup__item"
+                class="form__input"
                 required
+                minlength="2"
+                maxlength="200"
               />
+              <span id="about-error"></span>
             </label>
           </fieldset>
 
-          <fieldset class="popup__submit">
+          <fieldset class="form__submit">
             <input
               type="submit"
               title="Сохранить"
               value="Сохранить"
-              class="popup__save"
+              class="form__save"
             />
           </fieldset>
         </form>
@@ -105,18 +110,21 @@
           aria-label="закрыть"
           class="popup__close"
         ></button>
-        <form name="edit-info" class="popup__form">
-          <h2 class="popup__heading">Новое место</h2>
-          <fieldset class="popup__inputs">
+        <form name="add-photo" class="form" novalidate id="1">
+          <h2 class="form__heading">Новое место</h2>
+          <fieldset class="form__fieldset">
             <label for="place">
               <input
                 type="text"
                 id="place"
                 name="place"
                 placeholder="Название"
-                class="popup__item"
+                class="form__input"
                 required
+                minlength="2"
+                maxlength="30"
               />
+              <span id="place-error"></span>
             </label>
 
             <label for="source">
@@ -125,18 +133,19 @@
                 id="source"
                 name="source"
                 placeholder="Ссылка на картинку"
-                class="popup__item"
+                class="form__input"
                 required
               />
+              <span id="source-error"></span>
             </label>
           </fieldset>
 
-          <fieldset class="popup__submit">
+          <fieldset class="form__submit">
             <input
               type="submit"
               title="Создать"
               value="Создать"
-              class="popup__save"
+              class="form__save"
             />
           </fieldset>
         </form>
@@ -151,8 +160,7 @@
           class="popup__close"
         ></button>
         <img src="#" alt="" class="popup__photo" />
-        <figcaption class="popup__photo-title">
-        </figcaption>
+        <figcaption class="popup__photo-title"></figcaption>
       </figure>
     </div>
 
@@ -168,5 +176,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

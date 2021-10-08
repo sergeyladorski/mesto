@@ -1,0 +1,8 @@
+.form__save_inactive {
+    border: 1px solid rgba(0, 0, 0, 1);
+    opacity: 0.2;
+}
+
+.form__save_inactive:hover {
+    opacity: 0.2;
+  }
