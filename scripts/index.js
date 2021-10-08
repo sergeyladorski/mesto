@@ -2,25 +2,23 @@
 const btnEditInfo = document.querySelector('.profile__edit-info');  // кнопка открытия попапа
 const popupInfo = document.getElementById('edit-info');             // попап 'редактировать профиль'
 const popupInfoClose = popupInfo.querySelector('.popup__close');    // кнопка закрытия попапа 
-const popupInfoForm = popupInfo.querySelector('.popup__form');      // форма попапа
+const formInfo = popupInfo.querySelector('.form');                  // форма 'редактировать профиль'
 // 'имя' на странице и в input
 const profileName = document.querySelector('.profile__name');
 const popupName = document.getElementById('name');
 // 'о себе' на странице и в input
 const profileAbout = document.querySelector('.profile__about');
 const popupAbout = document.getElementById('about');
-
 //popup 'добавить фото'
 const btnAddPhoto = document.querySelector('.profile__add-photo');  // кнопка открытия попапа
 const popupPhoto = document.getElementById('add-photo');            // попап 'добавить фото'
 const popupPhotoClose = popupPhoto.querySelector('.popup__close');  // кнопка закрытия попапа 
-const popupPhotoForm = popupPhoto.querySelector('.popup__form');    // форма попапа
+const formPhoto = popupPhoto.querySelector('.form');                // форма 'добавить фото'
 //popup 'просмотр фото'
 const popupView = document.getElementById('view');                  //попап 'просмотр фото'
 const popupViewClose = popupView.querySelector('.popup__close');    // кнопка закрытия попапа 
-
+//галерея
 const cardsContainer = document.querySelector('.gallery__list');    //список карточек
-
 //начальные карточки
 const initialCards = [
     {
@@ -53,17 +51,6 @@ const initialCards = [
 function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
-                                                                    //закрыть активный попап кликом по оверлею
-document.addEventListener('click', (evt) => {
-    evt.target.classList.remove('popup_opened');
-})
-                                                                    //закрыть активный попап по Esc
-document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-        document.querySelector('.popup_opened').classList.remove('popup_opened');
-    }
-});
-
 //установить значения input из 'информация профиля'
 function setInputsValue() {
     popupName.value = profileName.textContent;
@@ -93,14 +80,12 @@ function createCard(data) {
     setEventListener(newCard);                                                      //EventListener новой карточки
     return newCard;
 }
-
 //присвоить карточке значения
 function setCardProperties(item, data) {
     item.querySelector('.gallery__photo-title').textContent = data.name;
     item.querySelector('.gallery__photo').src = data.link;
     item.querySelector('.gallery__photo').alt = data.name;
 }
-
 //создать новую карточку
 function createNewCard(evt) {
     evt.preventDefault();                                   //сохранить данные из input в объект
@@ -111,23 +96,20 @@ function createNewCard(evt) {
     cardsContainer.prepend(createCard(data));
     evt.currentTarget.reset();
     closePopup(popupPhoto);
-    console.log('создана новая карточка');
 }
-
 //начальные карточки
 function createDefaultCards() {
     initialCards.forEach((item) => {
         cardsContainer.append(createCard(item));
     })
 }
-
 //eventListener для карточек
 function setEventListener(item) {
     item.querySelector(".gallery__delete-photo").addEventListener("click", deleteCard);
     item.querySelector(".gallery__photo-like").addEventListener("click", likeCard);
     item.querySelector(".gallery__photo").addEventListener("click", openPopupView);
 }
-//удалить выбранную карточку
+//удалить карточку
 const deleteCard = (evt) => {
     evt.preventDefault();
     const target = evt.target;
@@ -136,7 +118,7 @@ const deleteCard = (evt) => {
         currentCard.remove();
     }
 }
-//поставить лайк выбранной карточке
+//поставить лайк карточке
 const likeCard = (evt) => {
     evt.preventDefault();
     const target = evt.target;
@@ -171,7 +153,17 @@ btnAddPhoto.addEventListener('click', () => openPopup(popupPhoto));             
 popupInfoClose.addEventListener('click', () => closePopup(popupInfo));                      //редактировать профиль
 popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));                    //добавить фото
 popupViewClose.addEventListener('click', () => closePopup(popupView));                      //просмотр фото
+//закрыть активный по оверлею
+document.addEventListener('click', (evt) => {
+    evt.target.classList.remove('popup_opened');
+})
+//закрыть активный по Esc
+document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+        document.querySelector('.popup_opened').classList.remove('popup_opened');
+    }
+});
 //сохранить и закрыть попап 
-popupInfoForm.addEventListener('submit', saveChangesInfo);                                  //информация профиля
-popupPhotoForm.addEventListener('submit', createNewCard);                                   //новое фото с описанием
+formInfo.addEventListener('submit', saveChangesInfo);                                  //информация профиля
+formPhoto.addEventListener('submit', createNewCard);                                   //новое фото с описанием
 createDefaultCards();

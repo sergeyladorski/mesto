@@ -1,4 +1,4 @@
-.popup__inputs {
+.form__fieldset {
   border: none;
   margin: 0;
   margin-bottom: 48px;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .popup__inputs {
+  .form__fieldset {
     margin-bottom: 45px;
   }
 }
