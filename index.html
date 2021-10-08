@@ -62,7 +62,7 @@
         <form name="edit-info" class="form" novalidate>
           <h2 class="form__heading">Редактировать профиль</h2>
           <fieldset class="form__fieldset">
-            <label for="name">
+            <label class="form__input-label" for="name">
               <input
                 type="text"
                 id="name"
@@ -73,10 +73,10 @@
                 minlength="2"
                 maxlength="40"
               />
-              <span id="name-error"></span>
+              <span class="form__input-error" id="name-error"></span>
             </label>
 
-            <label for="about">
+            <label class="form__input-label" for="about">
               <input
                 type="text"
                 id="about"
@@ -87,7 +87,7 @@
                 minlength="2"
                 maxlength="200"
               />
-              <span id="about-error"></span>
+              <span class="form__input-error" id="about-error"></span>
             </label>
           </fieldset>
 
@@ -113,7 +113,7 @@
         <form name="add-photo" class="form" novalidate id="1">
           <h2 class="form__heading">Новое место</h2>
           <fieldset class="form__fieldset">
-            <label for="place">
+            <label class="form__input-label" for="place">
               <input
                 type="text"
                 id="place"
@@ -124,10 +124,10 @@
                 minlength="2"
                 maxlength="30"
               />
-              <span id="place-error"></span>
+              <span class="form__input-error" id="place-error"></span>
             </label>
 
-            <label for="source">
+            <label class="form__input-label" for="source">
               <input
                 type="url"
                 id="source"
@@ -136,7 +136,7 @@
                 class="form__input"
                 required
               />
-              <span id="source-error"></span>
+              <span class="form__input-error" id="source-error"></span>
             </label>
           </fieldset>
 
