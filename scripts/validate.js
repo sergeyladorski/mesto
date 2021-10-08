@@ -21,17 +21,18 @@ const checkInputValidity = (formElement, inputElement, config) => {
     }
 }
 
-const toggleButtonState = (button, inputs, config) => {
-    Array.from(inputs).some(inputElement => {
-        if (inputElement.validity.valid) {
-            button.classList.remove(config.inactiveButtonClass);
-            button.removeAttribute('disabled');
-        }
-        else {
-            button.classList.add(config.inactiveButtonClass);
-            button.setAttribute('disabled', 'disabled');
-        }
+const toggleButtonState = (button, formInputs, config) => {
+    const formIsValid = Array.from(formInputs).some((inputElement) => {
+        return !inputElement.validity.valid;
     })
+    if (formIsValid) {
+        button.classList.add(config.inactiveButtonClass);
+        button.setAttribute('disabled', 'disabled');
+    }
+    else {
+        button.classList.remove(config.inactiveButtonClass);
+        button.removeAttribute('disabled');
+    }
 }
 
 const setEventListers = (formElement, config) => {
