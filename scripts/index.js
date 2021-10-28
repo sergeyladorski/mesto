@@ -1,3 +1,6 @@
+import {Card} from './Card.js'
+import{validationConfig, FormValidator} from './FormValidator.js'
+
 //popup 'редактировать профиль'
 const btnEditInfo = document.querySelector('.profile__edit-info');  // кнопка открытия попапа
 const popupInfo = document.querySelector('#edit-info');             // попап 'редактировать профиль'
@@ -53,7 +56,6 @@ function openPopup(popup) {
     closePopupOverlay(popup);
     popup.addEventListener('keydown', closePopupEsc(popup));
 }
-
 //закрыть по overlay
 function closePopupOverlay(popup) {
     popup.addEventListener('click', (evt) => {
@@ -89,81 +91,35 @@ function saveChangesInfo(evt) {
     saveInfoValue();
     closePopup(popupInfo);
 }
-
-//создать карточку
-function createCard(data) {
-    const cardTemplate = document.querySelector('#photo-template').content;         //шаблон карточки
-    const newCard = cardTemplate.querySelector('.gallery__card').cloneNode(true);   //новая карточка
-    setCardProperties(newCard, data);                                               //свойства новой карточки
-    setEventListener(newCard);                                                      //EventListener новой карточки
-    return newCard;
+//начальные карточки
+const defaultCards = () => {
+    initialCards.forEach((data) => {
+        const card = new Card(data, '#photo-template');
+        const cardElement = card.generateCard();
+    
+        cardsContainer.append(cardElement);
+    });
 }
-//присвоить карточке значения
-function setCardProperties(item, data) {
-    const photoElement = item.querySelector('.gallery__photo');
-    item.querySelector('.gallery__photo-title').textContent = data.name;
-    photoElement.src = data.link;
-    photoElement.alt = data.name;
-}
-//создать новую карточку
-function createNewCard(evt) {
-    evt.preventDefault();                                   //сохранить данные из input в объект
+defaultCards();
+//новые карточки
+const createNewCard = (evt) => {
+    evt.preventDefault();
     const data = {
         name: document.querySelector('#place').value,
         link: document.querySelector('#source').value,
     }
-    cardsContainer.prepend(createCard(data));
+    const card = new Card(data, '#photo-template');
+    const cardElement = card.generateCard();
+
+    cardsContainer.prepend(cardElement);
     evt.currentTarget.reset();
     closePopup(popupPhoto);
 }
-//начальные карточки
-function createDefaultCards() {
-    initialCards.forEach((item) => {
-        cardsContainer.append(createCard(item));
-    })
-}
-//eventListener для карточек
-function setEventListener(item) {
-    item.querySelector(".gallery__delete-photo").addEventListener("click", deleteCard);
-    item.querySelector(".gallery__photo-like").addEventListener("click", likeCard);
-    item.querySelector(".gallery__photo").addEventListener("click", openPopupView);
-}
-//удалить карточку
-const deleteCard = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    const currentCard = evt.currentTarget.closest('.gallery__card');
-    if (target.classList.contains('gallery__delete-photo')) {
-        currentCard.remove();
-    }
-}
-//поставить лайк карточке
-const likeCard = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    if (target.classList.contains('gallery__photo-like')) {
-        target.classList.toggle('gallery__photo-like_active');
-    }
-}
-//открыть фото карточки
-const openPopupView = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    const currentCard = evt.currentTarget.closest('.gallery__card');
-
-    const cardPhoto = currentCard.querySelector('.gallery__photo');
-    const popupPhoto = popupView.querySelector('.popup__photo')
-
-    const cardTitle = currentCard.querySelector('.gallery__photo-title');
-    const popupTitle = popupView.querySelector('.popup__photo-title')
-
-    if (target.classList.contains('gallery__photo')) {
-        popupPhoto.src = cardPhoto.src;
-        popupTitle.textContent = cardTitle.textContent;
-        popupPhoto.alt = cardTitle.textContent;
-    }
-    openPopup(popupView);
-}
+//запуск валидации форм
+const formValidatorInfo = new FormValidator(validationConfig, '#form-info');
+formValidatorInfo.enableValidation();
+const formValidatorAdd = new FormValidator(validationConfig, '#form-photo');
+formValidatorAdd.enableValidation();
 
 //открыть попап 
 btnEditInfo.addEventListener('click', () => { openPopup(popupInfo); setInputsValue(); });   //редактировать профиль
@@ -174,5 +130,6 @@ popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));        
 popupViewClose.addEventListener('click', () => closePopup(popupView));                      //просмотр фото
 //сохранить и закрыть попап 
 formInfo.addEventListener('submit', saveChangesInfo);                                  //информация профиля
-formPhoto.addEventListener('submit', createNewCard);                                   //новое фото с описанием
-createDefaultCards();
+formPhoto.addEventListener('submit', createNewCard);
+
+export {popupView, openPopup}
