@@ -18,27 +18,28 @@ class FormValidator {
         this._inputsList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
     }
-    _showError = (errorElement, inputElement) => {
+    _showError(inputElement) {
+        const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
         errorElement.textContent = inputElement.validationMessage;
         errorElement.classList.add(this._errorClass);
         inputElement.classList.add(this._inputErrorClass);
     }
-    _hideError = (errorElement, inputElement) => {
+    _hideError(inputElement) {
+        const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
         errorElement.textContent = '';
         errorElement.classList.remove(this._errorClass);
         inputElement.classList.remove(this._inputErrorClass);
     }
-    _checkInputValidity = (inputElement) => {
+    _checkInputValidity(inputElement) {
         const isInputNotValid = !inputElement.validity.valid;
-        const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
         if (isInputNotValid) {
-            this._showError(errorElement, inputElement);
+            this._showError(inputElement);
         } else {
-            this._hideError(errorElement, inputElement);
+            this._hideError(inputElement);
         }
     }
-    _toggleButtonState = () => {
-        const formIsValid =  this._inputsList.some((inputElement) => {
+    _toggleButtonState() {
+        const formIsValid = this._inputsList.some((inputElement) => {
             return !inputElement.validity.valid;
         })
         if (formIsValid) {
@@ -50,7 +51,14 @@ class FormValidator {
             this._submitButton.removeAttribute('disabled');
         }
     }
-    _setEventListers = () => {
+    //что-то пошло не так, стоит разобраться
+    resetValidation() {
+        this._toggleButtonState(); //управляем кнопкой
+        this._inputsList.forEach((inputElement) => {
+            this._hideError(inputElement) //очищаем ошибки
+        });
+    }
+    _setEventListers() {
         this._toggleButtonState();
         this._inputsList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
@@ -62,8 +70,8 @@ class FormValidator {
             evt.preventDefault();
         })
     }
-    enableValidation = () => {
+    enableValidation() {
         this._setEventListers();
     }
 }
-export {validationConfig, FormValidator}
+export { validationConfig, FormValidator }
