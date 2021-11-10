@@ -1,14 +1,9 @@
-const validationConfig = {
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__save',
-    inactiveButtonClass: 'form__save_inactive',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__input-error_active'
-}
+//isReady
+
 class FormValidator {
     constructor(config, formElementSelector) {
         this._config = config;
-        this._formElement = document.querySelector(formElementSelector);
+        this._formElement = formElementSelector;
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
         this._inactiveButtonClass = config.inactiveButtonClass;
@@ -51,15 +46,13 @@ class FormValidator {
             this._submitButton.removeAttribute('disabled');
         }
     }
-    //что-то пошло не так, стоит разобраться
     resetValidation() {
-        this._toggleButtonState(); //управляем кнопкой
+        this._toggleButtonState();
         this._inputsList.forEach((inputElement) => {
-            this._hideError(inputElement) //очищаем ошибки
+            this._hideError(inputElement);
         });
     }
     _setEventListers() {
-        this._toggleButtonState();
         this._inputsList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._checkInputValidity(inputElement);
@@ -74,4 +67,4 @@ class FormValidator {
         this._setEventListers();
     }
 }
-export { validationConfig, FormValidator }
+export default FormValidator;

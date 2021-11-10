@@ -29,7 +29,7 @@
         />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__about">Исследователь океана</p>
+          <p class="profile__desc">Исследователь океана</p>
         </div>
         <button
           type="button"
@@ -52,7 +52,7 @@
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <div class="popup" id="edit-info">
+    <div class="popup" id="popup-info">
       <div class="popup__container">
         <button
           type="button"
@@ -67,6 +67,7 @@
                 type="text"
                 id="name"
                 name="name"
+                placeholder="Имя"
                 value=""
                 class="form__input"
                 required
@@ -76,18 +77,19 @@
               <span class="form__input-error" id="name-error"></span>
             </label>
 
-            <label class="form__input-label" for="about">
+            <label class="form__input-label" for="info">
               <input
                 type="text"
-                id="about"
-                name="about"
+                id="info"
+                name="info"
+                placeholder="О себе"
                 value=""
                 class="form__input"
                 required
                 minlength="2"
                 maxlength="200"
               />
-              <span class="form__input-error" id="about-error"></span>
+              <span class="form__input-error" id="info-error"></span>
             </label>
           </fieldset>
 
@@ -103,7 +105,7 @@
       </div>
     </div>
 
-    <div class="popup" id="add-photo">
+    <div class="popup" id="popup-photo">
       <div class="popup__container">
         <button
           type="button"
@@ -175,6 +177,6 @@
       </li>
     </template>
 
-    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>

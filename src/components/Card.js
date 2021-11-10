@@ -1,10 +1,15 @@
-import { popupView, openPopup } from './index.js'
+// Свяжите класс Card c попапом. 
+// Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick. 
+// Эта функция должна открывать попап с картинкой при клике на карточку.
+
+//isReady
 
 class Card {
-    constructor(data, template) {
+    constructor(data, template, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._template = template;
+        this._handleCardClick = handleCardClick;
     }
     //получить шаблон карточки
     _getTemplate() {
@@ -13,8 +18,7 @@ class Card {
             .content
             .querySelector('.gallery__card')
             .cloneNode(true);
-            //неуверен что правильно понял ревьюера, но работает же
-            this.likeButton = cardElement.querySelector('.gallery__photo-like')
+        this.likeButton = cardElement.querySelector('.gallery__photo-like')
 
         return cardElement;
     }
@@ -28,25 +32,22 @@ class Card {
     _setEventListener() {
         this._element.querySelector('.gallery__delete-photo').addEventListener('click', this._deleteCard);
         this.likeButton.addEventListener('click', this._likeCard);
-        this._element.querySelector('.gallery__photo').addEventListener('click', this._openPopupView);
+        this._element.querySelector('.gallery__photo').addEventListener('click', this._openView);
     }
-    //удалить карточку
+    //удалить
     _deleteCard = () => {
         this._element.remove();
     }
-    //поставить лайк карточке
+    //поставить лайк
     _likeCard = () => {
         this.likeButton.classList.toggle('gallery__photo-like_active');
     }
-    //открыть фото карточки
-    _openPopupView = () => {
-        const popupPhoto = popupView.querySelector('.popup__photo')
-        const popupTitle = popupView.querySelector('.popup__photo-title')
-
-        popupPhoto.src = this._link
-        popupTitle.textContent = this._name
-        popupPhoto.alt = this._name
-        openPopup(popupView);
+    //просмотр
+    _openView = () => {
+        this._handleCardClick({
+            link: this._link,
+            name: this._name,
+        })
     }
     //создать карточку
     generateCard() {
@@ -56,4 +57,4 @@ class Card {
         return this._element;
     }
 }
-export { Card }
+export default Card;
