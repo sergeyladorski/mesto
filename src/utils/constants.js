@@ -29,26 +29,26 @@ export const validationConfig = {
 export const initialCards = [
     {
         name: 'Скалистый склон',
-        link: './images/gallery/1.jpg'
+        link: new URL('../images/gallery/1.jpg', import.meta.url),
     },
     {
         name: 'Прибрежная полоса',
-        link: './images/gallery/2.jpg'
+        link: new URL('../images/gallery/2.jpg', import.meta.url)
     },
     {
         name: 'Вид на залив',
-        link: './images/gallery/3.jpg'
+        link: new URL('../images/gallery/3.jpg', import.meta.url)
     },
     {
         name: 'Лесной пейзаж',
-        link: './images/gallery/4.jpg'
+        link: new URL('../images/gallery/4.jpg', import.meta.url)
     },
     {
         name: 'Хайкинг',
-        link: './images/gallery/5.jpg'
+        link: new URL('../images/gallery/5.jpg', import.meta.url)
     },
     {
         name: 'Камни',
-        link: './images/gallery/6.jpg'
+        link: new URL('../images/gallery/6.jpg', import.meta.url)
     }
 ];

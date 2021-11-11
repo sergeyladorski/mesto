@@ -14,16 +14,20 @@
     />
     <meta name="author" content="Сергей Ладорский" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   </head>
   <body class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="логотип Место" class="header__logo" />
+      <img
+        src="<%=require('./images/logo.svg')%>"
+        alt="логотип Место"
+        class="header__logo"
+      />
     </header>
     <main class="content">
       <section class="profile">
         <img
-          src="./images/default-avatar.jpg"
+          src="<%=require('./images/default-avatar.jpg')%>"
           alt="фото профиля"
           class="profile__avatar"
         />
@@ -59,7 +63,13 @@
           aria-label="закрыть"
           class="popup__close"
         ></button>
-        <form name="form-info" class="form" id="form-info" novalidate  autocomplete="off">
+        <form
+          name="form-info"
+          class="form"
+          id="form-info"
+          novalidate
+          autocomplete="off"
+        >
           <h2 class="form__heading">Редактировать профиль</h2>
           <fieldset class="form__fieldset">
             <label class="form__input-label" for="name">
@@ -112,7 +122,13 @@
           aria-label="закрыть"
           class="popup__close"
         ></button>
-        <form name="form-photo" class="form" id="form-photo" novalidate  autocomplete="off">
+        <form
+          name="form-photo"
+          class="form"
+          id="form-photo"
+          novalidate
+          autocomplete="off"
+        >
           <h2 class="form__heading">Новое место</h2>
           <fieldset class="form__fieldset">
             <label class="form__input-label" for="place">
@@ -177,6 +193,6 @@
       </li>
     </template>
 
-    <script type="module" src="./pages/index.js"></script>
+    <!-- <script type="module" src="./index.js"></script> -->
   </body>
 </html>

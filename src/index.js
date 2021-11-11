@@ -1,3 +1,4 @@
+import './pages/index.css';
 import {
     initialCards, validationConfig,
     userName, userDesc,
@@ -6,13 +7,13 @@ import {
     btnAddPhoto, btnEditInfo,
     containerCardSelector, templatePhotoSelector,
     popupPhotoSelector, popupInfoSelector, popupViewSelector
-} from '../utils/constants.js';
-import Card from '../components/Card.js'
-import FormValidator from '../components/FormValidator.js'
-import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/User.js';
+} from './utils/constants.js';
+import Card from './components/Card.js'
+import FormValidator from './components/FormValidator.js'
+import Section from './components/Section.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import UserInfo from './components/User.js';
 
 //work with popupImage
 const popupWithImage = new PopupWithImage(popupViewSelector);
