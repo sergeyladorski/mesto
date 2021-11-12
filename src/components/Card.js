@@ -18,21 +18,22 @@ class Card {
             .content
             .querySelector('.gallery__card')
             .cloneNode(true);
-        this.likeButton = cardElement.querySelector('.gallery__photo-like')
+        this.likeButton = cardElement.querySelector('.gallery__photo-like');
+        this.cardImage = cardElement.querySelector('.gallery__photo');
 
         return cardElement;
     }
     //установить свойства карточки
     _setCardProps() {
-        this._element.querySelector('.gallery__photo').src = this._link;
         this._element.querySelector('.gallery__photo-title').textContent = this._name;
-        this._element.querySelector('.gallery__photo').alt = this._name;
+        this.cardImage.alt = this._name;
+        this.cardImage.src = this._link;
     }
     //установить обработчики событий
     _setEventListener() {
         this._element.querySelector('.gallery__delete-photo').addEventListener('click', this._deleteCard);
         this.likeButton.addEventListener('click', this._likeCard);
-        this._element.querySelector('.gallery__photo').addEventListener('click', this._openView);
+        this.cardImage.addEventListener('click', this._openView);
     }
     //удалить
     _deleteCard = () => {
