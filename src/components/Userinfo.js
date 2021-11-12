@@ -10,9 +10,9 @@
 //isReady
 
 class UserInfo {
-    constructor({ userNameSelector, userDescSelector }) {
-        this.userName = userNameSelector;
-        this.userInfo = userDescSelector;
+    constructor({ userName, userDesc }) {
+        this.userName = userName;
+        this.userInfo = userDesc;
     }
     getUserInfo() {
         return {

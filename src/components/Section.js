@@ -12,10 +12,10 @@
 //isReady
 
 class Section {
-    constructor({ items, renderer }, containerSelector) {
+    constructor({ items, renderer }, container) {
         this._items = items;
         this._renderer = renderer;
-        this._container = containerSelector;
+        this._container = container;
     }
     renderItems() {
         this._items.forEach((item) => {
