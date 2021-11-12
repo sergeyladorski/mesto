@@ -11,7 +11,7 @@ export const formPhoto = document.querySelector('#form-photo');
 export const btnAddPhoto = document.querySelector('.profile__add-photo');
 export const btnEditInfo = document.querySelector('.profile__edit-info');
 //gallery
-export const containerCardSelector = document.querySelector('.gallery__list');
+export const containerCard = document.querySelector('.gallery__list');
 export const templatePhotoSelector = '#photo-template';
 //popup selectors
 export const popupPhotoSelector = '#popup-photo';

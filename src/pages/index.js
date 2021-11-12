@@ -5,7 +5,7 @@ import {
     nameInput, infoInput,
     formInfo, formPhoto,
     btnAddPhoto, btnEditInfo,
-    containerCardSelector, templatePhotoSelector,
+    containerCard, templatePhotoSelector,
     popupPhotoSelector, popupInfoSelector, popupViewSelector
 } from '../utils/constants.js';
 import Card from '../components/Card.js'
@@ -30,7 +30,7 @@ const cardList = new Section({
         return card.generateCard();
     },
 },
-    containerCardSelector
+    containerCard
 );
 cardList.renderItems();
 
