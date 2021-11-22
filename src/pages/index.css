@@ -12,6 +12,7 @@
 /*profile*/
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__change-avatar/profile__change-avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__desc/profile__desc.css);
@@ -25,6 +26,8 @@
 @import url(../blocks/gallery/__delete-photo/gallery__delete-photo.css);
 @import url(../blocks/gallery/__photo-desc/gallery__photo-desc.css);
 @import url(../blocks/gallery/__photo-title/gallery__photo-title.css);
+@import url(../blocks/gallery/__like-container/gallery__like-container.css);
+@import url(../blocks/gallery/__like-counter/gallery__like-counter.css);
 @import url(../blocks/gallery/__photo-like/gallery__photo-like.css);
 @import url(../blocks/gallery/__photo-like/_active/gallery__photo-like_active.css);
 /*footer*/
@@ -40,6 +43,7 @@
 @import url(../blocks/popup/__photo-title/popup__photo-title.css);
 /*form*/
 @import url(../blocks/form/__heading/form__heading.css);
+@import url(../blocks/form/__heading/_type/form__heading_type_confirm.css);
 @import url(../blocks/form/__fieldset/form__fieldset.css);
 /*form__input*/
 @import url(../blocks/form/__input-label/form__input-label.css);

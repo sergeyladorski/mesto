@@ -12,18 +12,19 @@
 //isReady
 
 class Section {
-    constructor({ items, renderer }, container) {
-        this._items = items;
+    constructor({ renderer }, container) {
         this._renderer = renderer;
         this._container = container;
     }
-    renderItems() {
-        this._items.forEach((item) => {
-            this._container.append(this._renderer(item))
-        });
+    renderItems(items) {
+        items.forEach(item => this._renderer(item));
     }
-    addItem(data) {
-        this._container.prepend(this._renderer(data))
+    addItem(data, isNewCard) {
+        if (isNewCard === true) {
+            this._container.prepend(data)
+        } else {
+            this._container.append(data);
+        }
     }
 }
 export default Section;
