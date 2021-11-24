@@ -13,6 +13,7 @@ class PopupWithImage extends Popup {
         this.popupImageTitle = this.popup.querySelector('.popup__photo-title');
     }
     open(data) {
+        console.log(data)
         this.popupImage.src = data.link;
         this.popupImageTitle.textContent = data.name;
         this.popupImage.alt = data.name;
