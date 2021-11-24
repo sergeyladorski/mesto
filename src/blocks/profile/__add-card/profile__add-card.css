@@ -1,4 +1,4 @@
-.profile__add-photo {
+.profile__add-card {
   padding: 0;
   justify-self: end;
   width: 150px;
@@ -16,13 +16,13 @@
   grid-row-end: 3;
 }
 
-.profile__add-photo:hover {
+.profile__add-card:hover {
   opacity: 0.6;
   transition: 0.3s;
 }
 
 @media screen and (max-width: 767px) {
-  .profile__add-photo {
+  .profile__add-card {
     margin: 0 auto;
     background-size: 16px 16px;
     width: 282px;

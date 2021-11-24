@@ -11,18 +11,18 @@ export const placeInput = document.querySelector('#place');
 export const sourceInput = document.querySelector('#source');
 //page forms
 export const formInfo = document.querySelector('#form-info');
-export const formPhoto = document.querySelector('#form-photo');
+export const formCard = document.querySelector('#form-card');
 export const formAvatar = document.querySelector('#form-avatar');
 //open popup buttons 'добавить фото' and 'редактировать профиль'
-export const btnAddPhoto = document.querySelector('.profile__add-photo');
+export const btnAddCard = document.querySelector('.profile__add-card');
 export const btnEditInfo = document.querySelector('.profile__edit-info');
 export const btnChangeAvatar = document.querySelector('.profile__change-avatar');
 //gallery
 export const containerCard = document.querySelector('.gallery__list');
-export const templatePhotoSelector = '#photo-template';
+export const templateCardSelector = '#card-template';
 //popup selectors
-export const popupPhotoSelector = '#popup-photo';
-export const popupAvaterSelector = '#popup-avatar';
+export const popupCardSelector = '#popup-card';
+export const popupAvatarSelector = '#popup-avatar';
 export const popupConfirmSelector = '#popup-confirm';
 export const popupInfoSelector = '#popup-info';
 export const popupViewSelector = '#view';
@@ -61,3 +61,19 @@ export const initialCards = [
         link: new URL('../images/gallery/6.jpg', import.meta.url)
     }
 ];
+
+//submit in progress visualisation
+export const changesInProgress = (isLoading, popupSelector) => {
+    const popupElement = document.querySelector(popupSelector);
+    const submitBtn = popupElement.querySelector('.form__save');
+    if (isLoading) {
+        submitBtn.value = 'Сохранение...';
+        submitBtn.setAttribute('disabled', 'disabled');
+        submitBtn.classList.add('form__save_inactive')
+    }
+    else if (!isLoading) {
+        submitBtn.value = submitBtn.title;
+        submitBtn.removeAttribute('disabled');
+        submitBtn.classList.remove('form__save_inactive')
+    }
+}

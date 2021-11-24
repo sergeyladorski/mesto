@@ -14,12 +14,13 @@
     />
     <meta name="author" content="Сергей Ладорский" />
     <title>Mesto</title>
-    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="page">
     <header class="header">
       <img
-        src="<%=require('./images/logo.svg')%>"
+
+        src="./images/logo.svg"
         alt="логотип Место"
         class="header__logo"
       />
@@ -45,7 +46,7 @@
         <button
           type="button"
           aria-label="добавить фото"
-          class="profile__add-photo"
+          class="profile__add-card"
         ></button>
       </section>
 
@@ -116,7 +117,7 @@
       </div>
     </div>
 
-    <div class="popup" id="popup-photo">
+    <div class="popup" id="popup-card">
       <div class="popup__container">
         <button
           type="button"
@@ -124,9 +125,9 @@
           class="popup__close"
         ></button>
         <form
-          name="form-photo"
+          name="form-card"
           class="form"
-          id="form-photo"
+          id="form-card"
           novalidate
           autocomplete="off"
         >
@@ -178,8 +179,8 @@
           aria-label="закрыть"
           class="popup__close"
         ></button>
-        <img src="#" alt="" class="popup__photo" />
-        <figcaption class="popup__photo-title"></figcaption>
+        <img src="#" alt="" class="popup__view" />
+        <figcaption class="popup__view-title"></figcaption>
       </figure>
     </div>
 
@@ -240,7 +241,7 @@
       </div>
     </div>
 
-    <template id="photo-template">
+    <template id="card-template">
       <li class="gallery__card">
         <img src="#" alt="" class="gallery__photo" />
         <button type="button" class="gallery__delete-photo"></button>
@@ -254,6 +255,6 @@
       </li>
     </template>
 
-    <!-- <script type="module" src="./index.js"></script> -->
+    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
