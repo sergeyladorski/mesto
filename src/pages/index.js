@@ -1,4 +1,4 @@
-// import './index.css';
+import './index.css';
 import {
     changesInProgress, validationConfig,
     userName, userDesc, userAvatar,
