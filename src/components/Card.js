@@ -1,9 +1,3 @@
-// Свяжите класс Card c попапом. 
-// Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick. 
-// Эта функция должна открывать попап с картинкой при клике на карточку.
-
-//isReady
-
 class Card {
     constructor(data, template, user,
         handleCardClick, deleteCardClick,
@@ -19,7 +13,6 @@ class Card {
         this._setLike = setLike;
         this._deleteLike = deleteLike;
     }
-
     //getting template card
     _getTemplate() {
         const cardElement = document
@@ -31,7 +24,7 @@ class Card {
         return cardElement;
     }
     //checking if there's my like on the card
-    islikeActive() {
+    _islikeActive() {
         let likeIsActive = false;
         this._data.likes.forEach(everyLike => {
             if (everyLike._id.includes(this._user)) {
@@ -41,7 +34,7 @@ class Card {
         return likeIsActive;
     }
     //checking whether the card is mine
-    isDeleteBtnActive() {
+    _isDeleteBtnActive() {
         if (this._user === this._data.owner._id) {
             this._deleteButton.classList.add('gallery__delete-photo_active');
         } else {
@@ -61,7 +54,7 @@ class Card {
         this._data.likes = data.likes;
         this._like.textContent = data.likes.length;
         this._showLikesNumber();
-        if (!this.islikeActive()) {
+        if (!this._islikeActive()) {
             this._removeLikeStateActive(this._data._id)
         } else {
             this._setLikeStateActive(this._data._id)
@@ -82,7 +75,7 @@ class Card {
     _setEventListeners() {
         //like button behavior
         this._likeButton.addEventListener('click', () => {
-            if (this.islikeActive()) {
+            if (this._islikeActive()) {
                 this._deleteLike(this._data._id)
                 this._removeLikeStateActive(this._data._id)
             } else {
@@ -91,7 +84,7 @@ class Card {
             }
         });
         //delete button behavior
-        this.isDeleteBtnActive();
+        this._isDeleteBtnActive();
         this._deleteButton.addEventListener('click', () => {
             this._deleteCardClick(this._id, this._element)
         });
@@ -103,7 +96,6 @@ class Card {
             })
         })
     }
-
     //generate card
     generateCard() {
         this._element = this._getTemplate();

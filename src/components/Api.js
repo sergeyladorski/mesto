@@ -1,7 +1,3 @@
-const myId = 'db1456b7b257895ef7a749a0';
-const myToken = '115fa395-010f-4ccc-93c6-6dc65854738f';
-
-
 export default class Api {
   constructor(config) {
     this.source = config.source

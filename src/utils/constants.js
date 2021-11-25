@@ -34,34 +34,6 @@ export const validationConfig = {
     inputErrorClass: 'form__input_type_error',
     errorClass: 'form__input-error_active'
 }
-//начальные карточки
-export const initialCards = [
-    {
-        name: 'Скалистый склон',
-        link: new URL('../images/gallery/1.jpg', import.meta.url),
-    },
-    {
-        name: 'Прибрежная полоса',
-        link: new URL('../images/gallery/2.jpg', import.meta.url)
-    },
-    {
-        name: 'Вид на залив',
-        link: new URL('../images/gallery/3.jpg', import.meta.url)
-    },
-    {
-        name: 'Лесной пейзаж',
-        link: new URL('../images/gallery/4.jpg', import.meta.url)
-    },
-    {
-        name: 'Хайкинг',
-        link: new URL('../images/gallery/5.jpg', import.meta.url)
-    },
-    {
-        name: 'Камни',
-        link: new URL('../images/gallery/6.jpg', import.meta.url)
-    }
-];
-
 //submit in progress visualisation
 export const changesInProgress = (isLoading, popupSelector) => {
     const popupElement = document.querySelector(popupSelector);
@@ -77,3 +49,30 @@ export const changesInProgress = (isLoading, popupSelector) => {
         submitBtn.classList.remove('form__save_inactive')
     }
 }
+// //начальные карточки
+// export const initialCards = [
+//     {
+//         name: 'Скалистый склон',
+//         link: new URL('../images/gallery/1.jpg', import.meta.url),
+//     },
+//     {
+//         name: 'Прибрежная полоса',
+//         link: new URL('../images/gallery/2.jpg', import.meta.url)
+//     },
+//     {
+//         name: 'Вид на залив',
+//         link: new URL('../images/gallery/3.jpg', import.meta.url)
+//     },
+//     {
+//         name: 'Лесной пейзаж',
+//         link: new URL('../images/gallery/4.jpg', import.meta.url)
+//     },
+//     {
+//         name: 'Хайкинг',
+//         link: new URL('../images/gallery/5.jpg', import.meta.url)
+//     },
+//     {
+//         name: 'Камни',
+//         link: new URL('../images/gallery/6.jpg', import.meta.url)
+//     }
+// ];
