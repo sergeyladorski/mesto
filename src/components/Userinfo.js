@@ -23,7 +23,12 @@ class UserInfo {
         }
     }
     setUserAvatar(avatar) {
-        this.userAvatar.src = avatar;
+        if(avatar) {
+            this.userAvatar.src = avatar;
+        } else {
+            console.log('Что-то пошло не так...');
+        }
+        
     }
     setUserInfo({ name, about, id }) {
         this.userName.textContent = name;
