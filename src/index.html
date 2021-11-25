@@ -14,24 +14,19 @@
     />
     <meta name="author" content="Сергей Ладорский" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   </head>
   <body class="page">
     <header class="header">
       <img
-
-        src="./images/logo.svg"
+        src="<%=require('./images/logo.svg')%>"
         alt="логотип Место"
         class="header__logo"
       />
     </header>
     <main class="content">
       <section class="profile">
-        <img
-          src="#"
-          alt="фото профиля"
-          class="profile__avatar"
-        />
+        <img src="#" alt="фото профиля" class="profile__avatar" />
         <button type="button" class="profile__change-avatar"></button>
         <div class="profile__info">
           <h1 class="profile__name"></h1>
@@ -255,6 +250,6 @@
       </li>
     </template>
 
-    <script type="module" src="./pages/index.js"></script>
+    <!-- <script type="module" src="./pages/index.js"></script> -->
   </body>
 </html>

@@ -43,10 +43,10 @@ class Card {
     //checking whether the card is mine
     isDeleteBtnActive() {
         if (this._user === this._data.owner._id) {
-            this._deleteButton.classList.remove('gallery__delete-photo_inactive')
+            this._deleteButton.classList.add('gallery__delete-photo_active');
         } else {
 
-            this._deleteButton.classList.add('gallery__delete-photo_inactive')
+            this._deleteButton.classList.remove('gallery__delete-photo_active');
         };
     }
     //manage like button state
@@ -60,17 +60,27 @@ class Card {
     getLikes(data) {
         this._data.likes = data.likes;
         this._like.textContent = data.likes.length;
+        this._showLikesNumber();
+        if (!this.islikeActive()) {
+            this._removeLikeStateActive(this._data._id)
+        } else {
+            this._setLikeStateActive(this._data._id)
+        }
     }
     //show likes number
     _showLikesNumber() {
-        if (this._data.likes.length > 0) {
-            this._like.textContent = this._data.likes.length
-        } else {
-            this._like.textContent = '0';
+        const likeCounter = this._element.querySelector('.gallery__like-counter');
+        if (this._data.likes.length >= 1) {
+            this._like.textContent = this._data.likes.length;
+            likeCounter.classList.add('gallery__like-counter_active');
+        } else if (this._data.likes.length === 0){
+            this._like.textContent = '';
+            likeCounter.classList.remove('gallery__like-counter_active');
         }
     }
     //setting cards event listeners
     _setEventListeners() {
+        //like button behavior
         this._likeButton.addEventListener('click', () => {
             if (this.islikeActive()) {
                 this._deleteLike(this._data._id)
@@ -80,15 +90,17 @@ class Card {
                 this._setLikeStateActive(this._data._id)
             }
         });
+        //delete button behavior
         this.isDeleteBtnActive();
         this._deleteButton.addEventListener('click', () => {
             this._deleteCardClick(this._id, this._element)
         });
-        // ДОРАБОТАТЬ СРОЧНО!!!
-        // ДОРАБОТАТЬ СРОЧНО!!!
-        // ДОРАБОТАТЬ СРОЧНО!!!
-        this._element.querySelector('.gallery__photo').addEventListener('click', () => {
-            this._handleCardClick(this._link, this._title);
+        //open a 75% srceen size image
+        this._cardImage.addEventListener('click', () => {
+            this._handleCardClick({
+                link: this._link,
+                name: this._title,
+            })
         })
     }
 
