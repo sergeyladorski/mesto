@@ -17,9 +17,9 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import UserInfo from '../components/Userinfo.js';
-import фзш from '../components/фзш.js';
+import Api from '../components/Api.js';
 
-const api = new фзш({
+const api = new Api({
     source: 'https://mesto.nomoreparties.co/v1',
     cohort: 'cohort-30',
     token: '115fa395-010f-4ccc-93c6-6dc65854738f'
