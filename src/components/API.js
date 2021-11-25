@@ -9,11 +9,11 @@ export default class Api {
     this.token = config.token
   }
   //checking if the server's responce is ok
-  _checkServerResponse(res) {
+  _checkResponse(res) {
     if (res.ok) {
-      return res.json()
+      return res.json();
     }
-    return Promise.reject(`${res.status}`)
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
   //get user info
   getUserInfo() {
@@ -23,7 +23,7 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
   //update user info
   patchUserInfo({ name: name, about: info }) {
@@ -38,7 +38,7 @@ export default class Api {
         about: info,
       })
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
   //update user avatar
   patchUserAvatar(avatar) {
@@ -52,7 +52,7 @@ export default class Api {
         avatar: avatar
       })
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
   //get cards
   getCards() {
@@ -62,7 +62,7 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
   //add a new card
   postCard({ name: place, link: source }) {
@@ -77,7 +77,7 @@ export default class Api {
         link: source
       })
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
   //delete selected card
   deleteCard(cardId) {
@@ -87,7 +87,7 @@ export default class Api {
         authorization: this.token,
       }
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
   //like selected card
   setLike(cardId) {
@@ -97,7 +97,7 @@ export default class Api {
         authorization: this.token,
       }
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
   //remove like on selected card
   deleteLike(cardId) {
@@ -107,6 +107,6 @@ export default class Api {
         authorization: this.token,
       }
     })
-      .then(res => this._checkServerResponse(res))
+      .then(res => this._checkResponse(res))
   }
 }
