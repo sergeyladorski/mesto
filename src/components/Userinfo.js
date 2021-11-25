@@ -15,7 +15,7 @@ class UserInfo {
         if(avatar) {
             this.userAvatar.src = avatar;
         } else {
-            console.log('Что-то пошло не так...');
+            console.log('Не удалось загрузить аватар');
         }
         
     }
