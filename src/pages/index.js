@@ -186,7 +186,6 @@ const cardsList = new Section({
     },
 }, containerCard);
 
-
 //button listeners
 btnEditInfo.addEventListener(
     'click',

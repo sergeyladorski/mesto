@@ -1,5 +1,3 @@
-//isReady
-
 class FormValidator {
     constructor(config, formElementSelector) {
         this._config = config;
