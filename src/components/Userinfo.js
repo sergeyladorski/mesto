@@ -15,14 +15,19 @@ class UserInfo {
         if(avatar) {
             this.userAvatar.src = avatar;
         } else {
-            console.log('Что-то пошло не так...');
+            console.log('Не удалось загрузить аватар');
         }
         
     }
     setUserInfo({ name, about, id }) {
-        this.userName.textContent = name;
-        this.userInfo.textContent = about;
-        this._id = id;
+        if({name, about, id}) {
+            this.userName.textContent = name;
+            this.userInfo.textContent = about;
+            this._id = id;
+        } else {
+            console.log('Не удалось загрузить данные пользователя');
+        }
+        
     }
     getUserId() {
         return this._id;
