@@ -20,9 +20,14 @@ class UserInfo {
         
     }
     setUserInfo({ name, about, id }) {
-        this.userName.textContent = name;
-        this.userInfo.textContent = about;
-        this._id = id;
+        if({name, about, id}) {
+            this.userName.textContent = name;
+            this.userInfo.textContent = about;
+            this._id = id;
+        } else {
+            console.log('Не удалось загрузить данные пользователя');
+        }
+        
     }
     getUserId() {
         return this._id;
