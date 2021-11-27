@@ -4,11 +4,7 @@ export const userDesc = document.querySelector('.profile__desc');
 export const userAvatar = document.querySelector('.profile__avatar');
 //user info inputs
 export const nameInput = document.querySelector('#name');
-export const infoInput = document.querySelector('#info');
-export const avatarInput = document.querySelector('#avatar');
-//card inputs
-export const placeInput = document.querySelector('#place');
-export const sourceInput = document.querySelector('#source');
+export const aboutInput = document.querySelector('#about');
 //page forms
 export const formInfo = document.querySelector('#form-info');
 export const formCard = document.querySelector('#form-card');
@@ -49,30 +45,3 @@ export const changesInProgress = (isLoading, popupSelector) => {
         submitBtn.classList.remove('form__save_inactive')
     }
 }
-// //начальные карточки
-// export const initialCards = [
-//     {
-//         name: 'Скалистый склон',
-//         link: new URL('../images/gallery/1.jpg', import.meta.url),
-//     },
-//     {
-//         name: 'Прибрежная полоса',
-//         link: new URL('../images/gallery/2.jpg', import.meta.url)
-//     },
-//     {
-//         name: 'Вид на залив',
-//         link: new URL('../images/gallery/3.jpg', import.meta.url)
-//     },
-//     {
-//         name: 'Лесной пейзаж',
-//         link: new URL('../images/gallery/4.jpg', import.meta.url)
-//     },
-//     {
-//         name: 'Хайкинг',
-//         link: new URL('../images/gallery/5.jpg', import.meta.url)
-//     },
-//     {
-//         name: 'Камни',
-//         link: new URL('../images/gallery/6.jpg', import.meta.url)
-//     }
-// ];

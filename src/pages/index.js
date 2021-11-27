@@ -2,8 +2,7 @@ import './index.css';
 import {
     changesInProgress, validationConfig,
     userName, userDesc, userAvatar,
-    nameInput, infoInput, avatarInput,
-    placeInput, sourceInput,
+    nameInput, aboutInput,
     formInfo, formCard, formAvatar,
     btnAddCard, btnEditInfo, btnChangeAvatar,
     containerCard, templateCardSelector,
@@ -45,13 +44,12 @@ Promise.all([api.getUserInfo(), api.getCards()])
 const userInfo = new UserInfo({ userName, userDesc, userAvatar });
 const popupUserInfo = new PopupWithForm(
     popupInfoSelector,
-    () => {
+    (data) => {
         changesInProgress(true, popupInfoSelector)
-        const data = {
-            name: nameInput.value,
-            about: infoInput.value,
-        }
-        api.patchUserInfo(data)
+        api.patchUserInfo({
+            name: data.name,
+            about: data.about,
+        })
             .then(() => {
                 userInfo.setUserInfo(data);
                 popupUserInfo.close();
@@ -68,12 +66,11 @@ popupUserInfo.setEventListeners()
 //update user avatar
 const popupAvatar = new PopupWithForm(
     popupAvatarSelector,
-    () => {
+    (data) => {
         changesInProgress(true, popupAvatarSelector)
-        const newAvatar = avatarInput.value;
-        api.patchUserAvatar(newAvatar)
+        api.patchUserAvatar(data.avatar)
             .then(() => {
-                userInfo.setUserAvatar(newAvatar);
+                userInfo.setUserAvatar(data.avatar);
                 popupAvatar.close();
             })
             .catch((err) => {
@@ -89,13 +86,12 @@ popupAvatar.setEventListeners()
 //popupCard
 const popupCard = new PopupWithForm(
     popupCardSelector,
-    () => {
+    (data) => {
         changesInProgress(true, popupCardSelector)
-        const cardInfo = {
-            name: placeInput.value,
-            link: sourceInput.value,
-        }
-        api.postCard(cardInfo)
+        api.postCard({
+            name: data.place,
+            link: data.source,
+        })
             .then((data) => {
                 const card = createCard({
                     name: data.name,
@@ -194,7 +190,7 @@ btnEditInfo.addEventListener(
         formValidatorUserInfo.resetValidation();
         const data = userInfo.getUserInfo();
         nameInput.value = data.name;
-        infoInput.value = data.about;
+        aboutInput.value = data.about;
     }
 )
 btnChangeAvatar.addEventListener(
