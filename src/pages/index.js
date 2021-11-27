@@ -2,8 +2,7 @@ import './index.css';
 import {
     changesInProgress, validationConfig,
     userName, userDesc, userAvatar,
-    nameInput, infoInput, avatarInput,
-    placeInput, sourceInput,
+    nameInput, aboutInput,
     formInfo, formCard, formAvatar,
     btnAddCard, btnEditInfo, btnChangeAvatar,
     containerCard, templateCardSelector,
@@ -49,7 +48,7 @@ const popupUserInfo = new PopupWithForm(
         changesInProgress(true, popupInfoSelector)
         api.patchUserInfo({
             name: data.name,
-            about: data.info,
+            about: data.about,
         })
             .then(() => {
                 userInfo.setUserInfo(data);
@@ -191,7 +190,7 @@ btnEditInfo.addEventListener(
         formValidatorUserInfo.resetValidation();
         const data = userInfo.getUserInfo();
         nameInput.value = data.name;
-        infoInput.value = data.about;
+        aboutInput.value = data.about;
     }
 )
 btnChangeAvatar.addEventListener(

@@ -1,13 +1,13 @@
 class UserInfo {
     constructor({ userName, userDesc, userAvatar, }) {
         this.userName = userName;
-        this.userInfo = userDesc;
+        this.userAbout = userDesc;
         this.userAvatar = userAvatar;
     }
     getUserInfo() {
         return {
             name: this.userName.textContent,
-            about: this.userInfo.textContent,
+            about: this.userAbout.textContent,
             avatar: this.userAvatar.src,
         }
     }
@@ -22,7 +22,7 @@ class UserInfo {
     setUserInfo({ name, about, id }) {
         if({name, about, id}) {
             this.userName.textContent = name;
-            this.userInfo.textContent = about;
+            this.userAbout.textContent = about;
             this._id = id;
         } else {
             console.log('Не удалось загрузить данные пользователя');

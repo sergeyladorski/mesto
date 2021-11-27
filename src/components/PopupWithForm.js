@@ -12,7 +12,6 @@ class PopupWithForm extends Popup {
         Array.from(this._inputsList).forEach((item) => {
             inputValues[item.id] = item.value;
         })
-        console.log(inputValues)
         return inputValues;
     }
     close() {
